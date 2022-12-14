@@ -4,8 +4,29 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="col-lg-8 py-4 px-4 border rounded">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <form method="post">
+        <!-- Data and Submit elements -->
+        <div class="mb-3 row">
+            <label asp-for="Data.Name1" class="col-lg-2 col-form-label text-end"></label>
+            <div class="col-lg-5">
+                <input asp-for="Data.Name1" class="form-control" v-bind:disabled="readonly">
+                <span asp-validation-for="Data.Name1" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label asp-for="Data.Name2" class="col-lg-2 col-form-label text-end"></label>
+            <div class="col-lg-5">
+                <input asp-for="Data.Name2" class="form-control" v-bind:disabled="readonly">
+                <span asp-validation-for="Data.Name2" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="text-right row mt-5">
+            <div class="col-lg-2">&nbsp;</div>
+            <div class="col-lg-10">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalDialog" v-bind:disabled="readonly">Submit</button>
+            </div>
+        </div>
+    </form>
 </div>
-
