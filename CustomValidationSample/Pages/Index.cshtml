@@ -10,22 +10,22 @@
         <!-- Data and Submit elements -->
         <div class="mb-3 row">
             <label asp-for="Data.Name1" class="col-lg-2 col-form-label text-end"></label>
-            <div class="col-lg-5">
-                <input asp-for="Data.Name1" class="form-control" v-bind:disabled="readonly">
+            <div class="col-lg-6">
+                <input asp-for="Data.Name1" class="form-control" >
                 <span asp-validation-for="Data.Name1" class="text-danger"></span>
             </div>
         </div>
         <div class="mb-3 row">
             <label asp-for="Data.Name2" class="col-lg-2 col-form-label text-end"></label>
-            <div class="col-lg-5">
-                <input asp-for="Data.Name2" class="form-control" v-bind:disabled="readonly">
+            <div class="col-lg-6">
+                <input asp-for="Data.Name2" class="form-control" >
                 <span asp-validation-for="Data.Name2" class="text-danger"></span>
             </div>
         </div>
         <div class="text-right row mt-5">
             <div class="col-lg-2">&nbsp;</div>
             <div class="col-lg-10">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalDialog" v-bind:disabled="readonly">Submit</button>
+                <button type="submit" class="btn btn-primary" >Submit</button>
             </div>
         </div>
     </form>

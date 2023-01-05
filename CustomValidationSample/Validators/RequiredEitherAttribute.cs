@@ -22,7 +22,7 @@ public sealed class RequiredEitherAttribute : ValidationAttribute
     /// <summary>
     /// 依存するプロパティの名前
     /// </summary>
-    public string DependentProperty { get; set; }
+    public string OtherProperty { get; set; }
 
     /// <summary>
     /// 依存するプロパティの値 （等しい時に検証）
@@ -33,10 +33,10 @@ public sealed class RequiredEitherAttribute : ValidationAttribute
     /// <summary>
     /// コンストラクタ
     /// </summary>
-    /// <param name="dependentProperty"></param>
-    public RequiredEitherAttribute(string dependentProperty)
+    /// <param name="otherProperty"></param>
+    public RequiredEitherAttribute(string otherProperty)
     {
-        DependentProperty = dependentProperty;
+        OtherProperty = otherProperty;
     }
 
     /// <summary>
@@ -51,15 +51,15 @@ public sealed class RequiredEitherAttribute : ValidationAttribute
             return ValidationResult.Success;
         // 検証に依存するプロパティへの参照を取得
         var containerType = validationContext.ObjectType;
-        var field = containerType.GetProperty(DependentProperty);
-        if (field != null)
+        var pinfo = containerType.GetProperty(OtherProperty);
+        if (pinfo != null)
         {
             // 依存プロパティの値を取得
-            var dependentvalue = field.GetValue(validationContext.ObjectInstance, null);
+            var dependentvalue = pinfo.GetValue(validationContext.ObjectInstance, null);
             if (dependentvalue != null)
                 return ValidationResult.Success;
         }
-        var otherPropertyDisplayName = GetOtherPropertyDisplayName(validationContext.ObjectInstance, this.DependentProperty);
+        var otherPropertyDisplayName = GetOtherPropertyDisplayName(validationContext.ObjectInstance, this.OtherProperty);
 
         return new ValidationResult(FormatErrorMessage(validationContext.DisplayName, otherPropertyDisplayName));
     }
