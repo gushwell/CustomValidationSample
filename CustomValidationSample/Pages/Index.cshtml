@@ -3,7 +3,6 @@
 @{
     ViewData["Title"] = "Home page";
 }
-
 <div class="col-lg-8 py-4 px-4 border rounded">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <form method="post">
@@ -24,8 +23,11 @@
         </div>
         <div class="text-right row mt-5">
             <div class="col-lg-2">&nbsp;</div>
-            <div class="col-lg-10">
+            <div class="col-lg-2">
                 <button type="submit" class="btn btn-primary" >Submit</button>
+            </div>
+            <div class="col-lg-8">
+                <div>@Model.Message</div>
             </div>
         </div>
     </form>
